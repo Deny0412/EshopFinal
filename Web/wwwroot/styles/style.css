@@ -1,0 +1,38 @@
+body{
+    margin:0;
+    min-width: 420px;
+    font-family: "Libre Franklin";
+}
+
+/*.fastnav .colorRed{
+    color:red;
+    margin-right:10px;
+}*/
+.textCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.lines{
+    display: flex;
+    align-items: center;
+    height: 35px;
+    gap:10px;
+}
+.px {
+    height: 1px;
+    background: #B4BED5;
+    flex: 4;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+p{
+    margin:0;
+}
+
+
+
+

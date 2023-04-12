@@ -1,0 +1,292 @@
+﻿@using Org.BouncyCastle.Asn1.Ocsp
+@using Web.DataModels
+@model ProductDataModel;
+@{
+    List<Category> categories = this.ViewBag.Categories;
+    List<Image> images = this.ViewBag.Images;
+    List<TotalProduct> variants = this.ViewBag.Variants;
+    List<Color> colors = this.ViewBag.Colors;
+    List<Size> sizes = this.ViewBag.Sizes;
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/styles/detail.css" />
+</head>
+<body>
+    <div class="width1440">
+        <main>
+            <div class="filter">
+                <div class="filterDiv filterDiv1">
+                    <a class=" filterItem" href="">Chlapecké <img src="~/img/Group%20169.png" alt=""></a>
+                    <a class=" filterItem" href="">Dívčí <img src="~/img/Group%20171.png" alt=""></a>
+                </div>
+                <div class="filterDiv filterDiv2">
+                    <a class=" textCenter filterItem" href="">Doplňky</a>
+                    <a class=" textCenter filterItem" href="">Ostatní</a>
+                    <a class=" textCenter filterItem kontaktFilter" href="">Kontakt</a>
+                </div>
+            </div>
+
+            <div class="navDetail">
+                <a href="">
+                    @{
+                                            foreach (var item in categories)
+                                            {
+                                                if (item.id==Model.product.category_id)
+                                                {
+                                                                                                                            @item.name;
+                                                }
+                                            }
+                                        }
+                </a>
+            </div>
+
+            <div class="product">
+             <div class="productTop">
+                    <div class="productImages">
+                        <div class="topImage">
+                            <img src="
+                                            @{
+                                                            foreach (Image item in images)
+                                {
+                                    if (item.product_id==Model.product.id && item.priority==1)
+                                    {
+                                                                                               @item.path;
+                                    }
+                                }
+                                            }
+                             " alt="">
+                        </div>
+                        <div class="threeImages">
+                            @foreach (Image img in this.ViewBag.Images3)
+                            {
+                                <img src="@img.path" width="50"/>
+                                @*<div style="background: url(@img.path)no-repeat center;" class="imageOverlay"><div class="overlay"></div></div>*@
+                            }
+                       
+                            @*<div class="imageOverlay"><div class="overlay"></div></div>
+                            <div class="imageOverlay imageOverlay1"><div class="overlay"></div></div>
+                            <div class="imageOverlay imageOverlay2"><div class="overlay"></div></div>*@
+                        </div>
+                            <!--                        <a href=""><img src="~/img2/bota3.png" alt=""></a>-->
+                            <!--                        <a href=""><img src="~/img2/bota3.png" alt=""></a>-->
+                            <!--                        <a href=""><img src="~/img2/bota4.png" alt=""></a>-->
+                            <!--                            <span class=”green-overlay”></span>-->
+                            <!--                        <a class="imgSmall" href="">-->
+                            <!--                            <img src="~/img2/bota2.png" alt="" width="200" height="200">-->
+                            <!--                            <span class=”green-overlay”></span>-->
+                            <!--                        </a>-->
+
+
+                        
+
+                    </div>
+               <div class="rightSideNextToProductImages">
+                            <div class="rightSideTop">
+                                <div class="titleProduct">@Model.product.name</div>
+                                <div class="brandProduct mobileHiden">
+                                    <img src="~/img/logoProdukt.png" alt="">
+                                </div>
+                            </div>
+                        
+                
+                <div class="productDescription mobileHiden">
+                            @Model.product.desc
+                    <div class="productColorAndSize">
+                                <div class="productSize">
+                                    <div class="productSizeTitle pcHiden">Varianty</div>
+                                    <div class="radio-group size">
+                                        <fieldset id="size" style="display:flex">
+                                            @foreach (TotalProduct var in variants)
+                                            {
+                                                <a asp-action="Detail" asp-route-id="@Model.product.id" asp-route-variantID="@var.id">
+                                                    @*<input type="radio" style="display:none">*@
+                                                    <label>
+                                                        <div class="size-option @(Model.variant.id == var.id ? "active" : string.Empty)">
+                                                            @foreach (Color color in colors)
+                                                            {
+                                                                  @foreach (Size size in sizes)
+                                                                {
+                                                                    if (var.size_id==size.id && var.color_id==color.id)
+                                                                    {
+                                                                        <div style="background-color:@color.hex">
+                                                                            @color.color
+                                                                            @size.size
+                                                                        </div>
+                                                                       
+                                                                    }
+                                                                }                                                                
+                                                            }
+
+                                                        </div>
+                                                    </label>
+                                                    
+                                                </a>
+                                            }
+                                        </fieldset>
+
+                                    </div>
+                                </div>
+
+                               
+
+                            
+  
+                        <div class="skladem">Skladem</div>
+                        <div class="priceAndAddToCart">
+                            <div class="leftPrice">
+                                <div class="beforePrice"></div>
+                                <div class="nowPrice">@Model.product.price Kč</div>
+                            </div>
+                                    <a asp-controller="Cart" asp-action="Add" asp-route-variantID="@Model.variant.id" class="addToCart"><img src="~/img/basketWhite.png" alt="demand.html"><div class="mobileHiden">Přidat</div> &nbsp; do košíku</a>
+                        </div>
+                                
+                    </div>
+                </div>
+              </div>
+
+
+             </div>
+            </div>
+            <div class="productBottom">
+                    @*<div class="infoAboutProduct">
+                        <div class="infoAboutProductTitle">Informace o produktu</div>
+                        <div class="infoAboutProductText">
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+                            <br><br>
+                            <b>Sed quia consequuntur</b><br>
+                            magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                            <br><br>
+                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+
+                            Sed quia consequuntur
+                            magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+
+                        </div>
+                    </div>*@
+                    <div class="parametryProduct">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        Parametry produktu
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Barva</td>
+
+                                    <td>
+                                        @foreach (Color color in colors)
+                                        {
+                                            if (@Model.variant.color_id ==color.id)
+                                            {
+                                                @color.color
+                                            }
+                                        }
+                                        </td>
+                                </tr>
+                                @*<tr>
+                                    <td>Druh</td>
+                                    <td>Do deště, turistické</td>
+                                </tr>*@
+                                @*<tr>
+                                    <td>Materiál</td>
+                                    <td>Guma</td>
+                                </tr>*@
+                                <tr>
+                                    <td>Určení</td>
+                                    <td>
+                                        @{
+                                            foreach (var item in categories)
+                                            {
+                                                if (item.id==Model.product.category_id)
+                                                {
+                                                                                                                            @item.name;
+                                                }
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Kód</td>
+                                    <td>@Model.product.SKU</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            <div class="lines">
+                <div class="px"></div>
+                <div><img class="" src="~/img/Group%20295.png" alt=""></div>
+                <div class="px"></div>
+            </div>
+
+            <div class="shoes">
+                <div class="newKousky">
+                    <p class="firstColor">Mohlo by se</p>
+                    <h2 class="secondColor">&nbspVám líbit</h2>
+
+                </div>
+                <div class="newShoesDetail">
+                    @foreach (Product item in this.ViewBag.Products4)
+                    {
+                        <div class="shoe shoe1">
+                            <a asp-controller="Home" asp-route-id="@item.id" asp-action="Detail">
+                                <div><img class="imgWidth" src="
+                                                                    @foreach (Image image in images)
+                                {
+                                    if (item.id == image.product_id && image.priority==1)
+                                    {
+                                        @image.path
+                                    }
+                                }
+                                                                    " alt=""></div>
+                                <div><p class="newShoesItemText">@item.name</p></div>
+                            </a>
+                            <div class="itemTextDiv">
+                                <div class="price">
+                                    <p>@item.price Kč</p>
+                                    <p></p>
+                                </div>
+                                
+                                <div class="basketOnShoe ">
+                                    @*<a asp-controller="Cart" asp-action="Add" asp-route-variantID="@Model.variant.id">
+                                        <img src="~/img/basket.png">
+                                        </a>*@
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                    
+
+
+
+
+                </div>
+                <div class="lines">
+                    <div class="px"></div>
+                    <div><img class="" src="~/img/Group%20295.png" alt=""></div>
+                    <div class="px"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

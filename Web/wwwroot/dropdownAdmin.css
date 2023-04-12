@@ -1,0 +1,8 @@
+﻿.collapse {
+    &:not(.show)
+
+{
+    display: none;
+}
+}
+

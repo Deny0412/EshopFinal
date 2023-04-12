@@ -1,0 +1,172 @@
+﻿@model Product;
+@{
+    Layout = "_LayoutAdmin"; 
+
+	MyContext context = new MyContext();
+	List<Category> categories = context.Categories.ToList();
+	List<Image> Images=context.Images.ToList();
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+	<input asp-for="id" hidden />
+	@*<input asp-for="photoMain" hidden />*@
+
+	<div class="row">
+		<div class="col-10">
+			<div class="border p-3 mt-4 row">
+				<div class="col-12 pb-2">
+					<h2 class="text-primary">@(Model.id != 0 ? "Update" : "Create")  Product</h2>
+					<hr />
+				</div>
+				<div asp-validation-summary="All"></div>
+				<div class="mb-3">
+					<label asp-for="name"></label>
+					<input asp-for="name" class="form-control" />
+					<span asp-validation-for="name" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="desc"></label>
+					<textarea asp-for="desc" rows="3" class="form-control"></textarea>
+					<span asp-validation-for="desc" class="text-danger"></span>
+				</div>
+				<div class="mb-3 col-6">
+					<label asp-for="SKU"></label>
+					<input asp-for="SKU" class="form-control" />
+					<span asp-validation-for="SKU" class="text-danger"></span>
+				</div>
+				<div class="mb-3 col-6">
+					<label asp-for="price"></label>
+					<input asp-for="price" class="form-control" />
+					<span asp-validation-for="price" class="text-danger"></span>
+				</div>
+				@*<div class="mb-3 col-6">
+				<label asp-for="photoMain"></label>
+				<input asp-for="photoMain" class="form-control" />
+				<span asp-validation-for="photoMain" class="text-danger"></span>
+				</div>*@
+				<div class="mb-3">
+					<label >Hlavní obrázek</label>
+					<input  type="file" name="mainPhoto" class="form-control" />
+				</div>
+				<div class="mb-3">
+					<label>Doplňující obrázky</label>
+					<input  type="file" name="listImages" class="form-control" multiple/>
+				</div>
+
+				<div class="mb-3 col-6">
+					<label asp-for="category_id"></label>
+					<select asp-for="category_id" class="form-select">
+						@foreach (Category cat in categories)
+						{
+							<option value="@cat.id">@cat.name</option>
+						}
+
+					</select>
+					<span asp-validation-for="category_id" class="text-danger"></span>
+				</div>
+
+				<div class="col-12">
+					@*@if (Model.Product.id != 0)
+					{
+					<button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+					}
+					else
+					{
+					<button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Create</button>
+					}*@
+					<button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">@(Model.id != 0 ? "Update" : "Create")</button>
+					<a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+						Back to List
+					</a>
+				</div>
+				@*@if (Model.photoMain!=null)
+				{
+				<div class="col-2 pt-4">
+				<img src="@Model.photoMain"
+				width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+				</div>
+				}*@
+			</div>
+		</div>
+
+	</div>
+	@if (Model.id!=null)
+	{
+		<div class="d-flex gap-4 ">
+			<table class="table table-bordered table-striped w-25" >
+				<thead>
+					<tr>
+						<th>
+							Doplňující obrázky
+						</th>
+						<th>
+							Akce
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Images)
+					{
+						if (item.product_id == Model.id && item.priority == 2)
+						{
+							<tr style="height:50px">
+								<td class="w-25">
+									<img width="100px" src="@item.path" />
+								</td>
+								<td>
+									<div class=" btn-group" role="group">
+										@*<a asp-controller="Images" asp-action="Edit" asp-route-id="@item.id"
+							class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i>Edit</a>*@
+										<a asp-controller="Image" asp-action="Delete" asp-route-id="@item.id" asp-route-productID="@Model.id"
+							   class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+										@*@this.TempData["backtosite"]=@Model.id;*@
+									</div>
+								</td>
+							</tr>
+
+						}
+					}
+				</tbody>
+
+			</table>
+			<table class="table table-bordered table-striped" style="width:35%;height:100px">
+				<thead>
+					<tr>
+						<th>
+							Hlavní obrázek
+						</th>
+						<th>
+							Akce
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Images)
+					{
+						if (item.product_id == Model.id && item.priority == 1)
+						{
+							<tr>
+								<td >
+									<img style="height:100px" src="@item.path" />
+								</td>
+								<td>
+									<div class="w-75 btn-group" role="group">
+										<a asp-controller="Image" asp-action="Delete" asp-route-id="@item.id"
+							   class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+										@*@{this.ViewBag.BackToSite=@Model.id}*@
+									</div>
+								</td>
+							</tr>
+
+						}
+					}
+				</tbody>
+
+			</table>
+		</div>
+	}	
+
+
+
+</form>

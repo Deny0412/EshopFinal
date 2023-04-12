@@ -1,0 +1,14 @@
+﻿@model Image;
+
+@{
+    Layout = "_LayoutAdmin";
+}
+<form method="post" asp-action="Delete" asp-route-productID="@ViewBag.ProductID">
+    <input asp-for="id" hidden />
+
+
+<img src="@Model.path"/>
+
+<h2 > Přejete si vážně smazat tento obrázek?</h2>
+    <button class="btn btn-danger" type="submit">ANO</button>
+</form>

@@ -1,0 +1,155 @@
+
+header{
+    min-width: 342px;
+}
+.upHead {
+    background-color: #304068;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center
+
+}
+.upHead .first{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    padding: 0 8px;
+}
+.telMail{
+    min-width: 260px;
+    text-align: left;
+    /*flex:1;*/
+    color:white;
+    display: flex;
+}
+@media (min-width: 250px)and (max-width: 1439px){
+    header > div, main > div,.footerDown > div,.topFooter{
+        padding: 0 8px;
+    }
+}
+
+.telMail a{
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+.head{
+    margin-top: 28px;
+    margin-bottom: 15px;
+    display: flex;
+}
+.logoAccount{
+    flex:1;
+    text-align: right;
+    display: flex;
+    justify-content: right;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.head a{
+    flex:1;
+}
+.fastNav{
+    /*flex:1;*/
+    text-align: right;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.telMail a:hover{
+    transition-duration: 1s;
+    color:red;
+}
+.fastNav a{
+    margin-left: 20px;
+    color:red;
+}
+.mobileHiden{display: none}
+@media (min-width:1440px) {
+    /*header > div, main > div,footer > div{*/
+    /*    padding: 0 120px;*/
+    /*}*/
+    .logoAccount:hover{
+        color:#c7232f;
+    }
+    .width1440{
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    header,main{
+        max-width: 1200px;
+    }
+    .telMail{
+        min-width: 600px;
+    }
+    .width600px{
+        min-width: 600px;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .logoAccount{
+        min-width: 600px;
+        /*flex:0;*/
+        align-items: center;
+        max-width: 130px;
+    }
+    .upHead div{
+        display: flex;
+        /*justify-content: center;*/
+        margin: 0 auto;
+        align-items: center;
+    }
+    .upHead .first{
+        width: 1200px;
+    }
+    header{
+        width: 100%;
+    }
+    .newKousky{
+        display: flex;
+        justify-content: center;
+    }
+    .mobileHiden{
+        display: inline-block;
+    }
+    .telNumber{
+
+        display: flex;
+    }
+    .telNumber:before{
+        content: url("../img/8.png");
+        align-items: center;
+        display: flex;
+        margin-right: 10px;
+    }
+    .fastNav a{
+    }
+    .searchBar{
+        /*font-size: 16px;*/
+        border-radius: 0;
+        border: 2px solid #d4d5d6;
+
+        height: 30px;
+        background: url(../img/loupe.png) no-repeat;
+        background-position: left;
+        background-position-x: 2px;
+        padding-left: 30px;
+        background-color: white;
+        margin-right: 10px;
+    }
+    .fastNav .basketUp{
+        margin-right: 10px;
+    }
+    .pcHiden{
+        display: none;
+    }
+    .logo{
+        transition: all 0.5s ease-in-out;
+    }
+    .logo:hover{
+
+    }
+}

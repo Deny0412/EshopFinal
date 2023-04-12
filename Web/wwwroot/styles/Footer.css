@@ -1,0 +1,220 @@
+.blueCircle{
+    margin:10px 0;
+    width: 60px;
+    height: 60px;
+    background: #304068;
+    display: flex;
+    align-items: center;
+    /*align-content: center;*/
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.imgInBlueCircle{
+    height: 40px;
+}
+.footerTextTopNextToCircle{
+    font-size: 20px;
+    color: rgb(48, 64, 104);
+    text-transform: uppercase;
+    flex:1;
+}
+footer{
+
+}
+.topFooter{
+    display: block;
+}
+.topFooterDiv{
+    display: flex;
+    align-items: center;
+}
+.footerEmail{
+    background:url("../img/newLetter.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 302px;
+    margin-top:30px
+}
+.newsMainText{
+    font-size: 32px;
+    font-family: "Libre Franklin";
+    color: rgb(32, 32, 32);
+    font-weight: bold;
+    line-height: 1.2;
+    text-align: center;
+    padding-top:50px;
+}
+.newsAfterMainText{
+    font-size: 20px;
+    font-family: "Libre Franklin";
+    color: rgb(96, 96, 96);
+    line-height: 1.2;
+    text-align: center;
+}
+.aboutUs{
+   background-color: #c7232f;
+    height: 640px;
+}
+.aboutUsMainText{
+    font-size: 16px;
+    font-family: "Libre Franklin";
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: left;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.aboutUsAfterMainText{
+    font-size: 14px;
+    font-family: "Libre Franklin";
+    color: rgb(255, 255, 255);
+    line-height: 1.286;
+    text-align: left;
+}
+.footerEmail form{
+    text-align: center;
+}
+.footerEmail form input{
+    height: 30px;
+    font-size: 16px;
+    border-radius: 0;
+    border: 2px solid #d4d5d6;
+    margin-top:30px;
+    height: 50px;
+}
+.footerEmail form button{
+    background:#c7232f;
+    height: 55px;
+    color: white;
+    font-family: "Libre Franklin";
+    border:2px solid #c7232f;
+
+}
+.footerEmail form button:hover{
+    background:grey;
+    border:2px solid grey;
+}
+.imgWhiteLogo{
+    padding:35px 0;
+}
+.inputNews{
+    background:url("../img/6_grey.png") no-repeat;
+    background-position: left;
+    background-position-x: +2px;
+    padding-left: 30px;
+    background-color: white;
+}
+.rightColumn{
+    color:white;
+    flex:1;
+}
+.rightColumn .boys{
+    padding-left:20px;
+}
+.leftColumn .girls{
+    padding-left:20px;
+}
+.leftColumn{
+    color:white;
+    flex:1;
+}
+.naseNabidka{
+    display: flex;
+}
+.contactUs{
+    background:#304068;
+    height: 300px;
+}
+.contactUsMainText{
+    font-size: 16px;
+    font-family: "Libre Franklin";
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    padding:40px 0;
+}
+.contactUsPadding{
+    padding: 5px 0;
+}
+.fbtwiiterigPadding > a{
+    padding-right: 8px;
+}
+.addressFooter{
+    font-size: 16px;
+    font-family: "Libre Franklin";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    font-style: normal;
+    padding-top: 30px;
+}
+.firstDivAboutUs{
+    height: 400px;
+}
+@media (min-width:1440px) {
+    .topFooter{
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+    .topFooterDiv{
+        flex:1;
+    }
+    .footerDown{
+        display: flex;
+
+    }
+
+    footer .footerDown {
+        padding:0px;
+    }
+    .aboutUs{
+        padding-left:120px;
+        flex:2;
+        height: 500px;
+        display: flex;
+    }
+    .aboutUs >div {
+        flex:1;
+    }
+    .firstDivAboutUs{
+        padding-right: 132px;
+    }
+    .contactUs{
+        flex:1;
+        padding-left:25px;
+        height: 500px;
+    }
+    .leftColumn,.rightColumn{
+        padding-bottom: 40px;
+        padding-top: 40px;
+    }
+    .leftColumn ul li,.rightColumn ul li{
+        margin:10px 0;
+    }
+    .topFooterDiv p{
+        margin-left: 20px;
+    }
+    .topFooterDiv{
+        transition: all 0.5s ease-in-out;
+    }
+    .topFooterDiv:hover{
+        color:#c7232f;
+        text-decoration: underline;
+    }
+    .topFooterDiv:hover .blueCircle{
+        background-color: #c7232f;
+    }
+    .footerTextTopNextToCircle{
+        justify-content: center;
+        margin-left: 20px;
+    }
+    .naseNabidka div ul li a:hover{
+        color:grey;
+    }
+    .contactUs div a:hover{
+        color:grey
+    }
+}
+

@@ -1,0 +1,29 @@
+﻿@model Size
+
+@{
+	Layout = "_LayoutAdmin";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+<form method="post" asp-action="Delete">
+	<input asp-for="id" hidden />
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Delete Size</h2>
+			<hr />
+		</div>
+		@*<div asp-validation-summary="All"></div>*@
+		<div class="mb-3">
+			<label asp-for="size"></label>
+			<input asp-for="size" disabled class="form-control" />
+		</div>
+		@*<div class="mb-3">
+			<label asp-for="id"></label>
+			<input asp-for="id" disabled class="form-control" />
+		</div>*@
+		<button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+		<a asp-controller="Size" asp-action="Index" class="btn btn-secondary" style="width:150px">
+			Back to List
+		</a>
+	</div>
+</form>

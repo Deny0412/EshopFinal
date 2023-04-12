@@ -1,0 +1,473 @@
+body{
+    font-family: "Libre Franklin";
+    transition: all .5s ease-in-out;
+}
+.navDetail a{
+    font-size: 16px;
+    font-family: "Libre Franklin";
+    color: rgb(199, 35, 47);
+}
+.navDetail{
+    color: rgb(199, 35, 47);
+}
+.navDetail a:hover{
+    color: grey;
+}
+.productTop{
+    display: flex;
+}
+.productImages{
+    flex:1;
+    /*width: 600px;*/
+    margin-right: 30px;
+}
+.rightSideNextToProductImages{
+    flex:1;
+}
+.topImage img {
+    display: block;
+    border:2px solid #dde2ec;
+    margin-bottom: 15px;
+    width: 600px;
+}
+.threeImages .imageOverlay{
+    flex:1;
+    background: url("../img2/bota2.png")no-repeat center ;
+    background-size: contain;
+
+}
+.threeImages .imageOverlay1{
+    background: url("../img2/bota3.png")no-repeat center ;
+    background-size: contain;
+}
+.threeImages .imageOverlay2{
+    background: url("../img2/bota4.png")no-repeat center ;
+    background-size: contain;
+}
+
+.overlay{
+    visibility: hidden;
+    width: 100%;
+    background: #c7232f30;
+}
+
+.threeImages >div:hover > div{
+    visibility: visible;
+}
+.threeImages{
+    display: flex;
+    gap:30px
+}
+.threeImages div{
+    height: 178px;
+    max-width: 178px;
+    flex:1;
+    border:1px solid #d6dbe8;
+}
+.threeImages img{
+    flex:1;
+   border:2px solid #dde2ec;
+    width: 177px;
+}
+.rightSideTop{
+    display: flex;
+}
+.titleProduct{
+    flex:2;
+}
+.brandProduct{
+    flex:1;
+    padding-top: 15px;
+}
+.titleProduct{
+    font-size: 42px;
+    font-family: "Libre Franklin";
+    color: rgb(48, 64, 104);
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+.productDescription{
+    font-size: 16px;
+    font-family: "Libre Franklin";
+    color: rgb(180, 190, 213);
+}
+.productColorAndSize{
+    margin-top:50px;
+    border-top:1px solid #b4bed5;
+    border-bottom:1px solid #b4bed5;
+    height: 120px;
+    padding-top:25px;
+    /*display: flex;*/
+    /*align-items: center;*/
+}
+.productColorsButtons{
+    display:flex;
+    gap:20px;
+}
+.productFlex{
+    display: flex;
+}
+.productColor,.productSize{
+
+    flex:1;
+    display: block;
+    /* justify-content: center; */
+    margin: 0 auto;
+    align-items: center;
+}
+.productColorTitle,.productSizeTitle{
+    flex:1;
+    font-size: 16px;
+    font-family: "Libre Franklin";
+    color: rgb(48, 64, 104);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.size-option {
+    color:black;
+    /*outline: 1px solid black;*/
+    /*width: 30px;
+    height: 30px;
+    border-radius: 50%;*/
+}
+.color .active {
+    outline: 1px solid red;
+}
+.size .active {
+    color: white;
+    border:2px solid black;
+    text-decoration: underline;
+}
+.darkBlueColor[type='radio']:after{
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    top: -6px;
+    left: -14px;
+    position: relative;
+   
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #b4bed5;
+}
+
+.darkBlueColor[type='radio']:checked:after{
+    border: 2px solid #c7232f;
+}
+.lightBlueColor[type='radio']:after{
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    top: -6px;
+    left: -14px;
+    position: relative;
+    background-color: #7691de;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #b4bed5;
+}
+.lightBlueColor[type='radio']:checked:after{
+    border: 2px solid #c7232f;
+}
+
+.blackColor[type='radio']:after{
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    top: -6px;
+    left: -14px;
+    position: relative;
+    background-color: black;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #b4bed5;
+}
+.blackColor[type='radio']:checked:after{
+    border: 2px solid #c7232f;
+}
+.redColor[type='radio']:after{
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    top: -6px;
+    left: -14px;
+    position: relative;
+    background-color: #c7232f;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #b4bed5;
+}
+.redColor[type='radio']:checked:after{
+    border: 2px solid #c7232f;
+}
+.lightGreenColor[type='radio']:after{
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    top: -6px;
+    left: -14px;
+    position: relative;
+    background-color: #acd373;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid #b4bed5;
+}
+.lightGreenColor[type='radio']:checked:after{
+    border: 2px solid #c7232f;
+}
+.size{
+    display: flex;
+}
+.sizeInput[type="radio"] + label {
+    color: black;
+    margin-right:10px;
+}
+.sizeInput[type="radio"] {
+    display: none;
+}
+.sizeInput[type="radio"]:checked + label {
+    color:#c7232f;
+    text-decoration: underline;
+}
+.unvailableSize[type="radio"] + label {
+    color:#bfc7db;
+    text-decoration: line-through;
+}
+.radio-group input{
+}
+
+.skladem{
+    font-size: 42px;
+    font-family: "Libre Franklin";
+    color: rgb(48, 64, 104);
+    font-weight: bold;
+    margin:30px 0;
+}
+.beforePrice{
+    flex: 1;
+    text-decoration: line-through;
+    font-size: 20px;
+    color: rgb(181, 191, 213);
+}
+.nowPrice{
+    font-size: 42px;
+    font-family: "Libre Franklin";
+    color: rgb(199, 35, 47);
+    font-weight: bold;
+}
+.priceAndAddToCart{
+    display: flex;
+    align-items: center;
+}
+.leftPrice{
+    flex:1;
+}
+.addToCart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    /*gap:40px;*/
+    flex:1;
+    border-radius: 0;
+    height: 30px;
+    border:0px;
+    background-color:#c7232f;
+    margin-right: 10px;
+    height: 50px;
+    max-width: 225px;
+    font-family: 'Libre Franklin', sans-serif;
+}
+.addToCart img{
+    margin-right: 20px;
+}
+.productBottom{
+    display: flex;
+    margin-bottom: 40px;
+}
+.infoAboutProduct{
+    flex:2;
+}
+.parametryProduct{
+    flex:1;
+}
+.infoAboutProductTitle{
+    margin-top: 30px;
+    font-size: 36px;
+    font-family: "Libre Franklin";
+    color: rgb(48, 64, 104);
+    font-weight: bold;
+}
+.infoAboutProductText{
+    font-size: 16px;
+    font-family: "Libre Franklin";
+    color: rgb(48, 64, 104);
+}
+.parametryProduct table{
+    width:380px;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin-top:30px;
+    margin-left: 30px;
+}
+.parametryProduct table tbody tr{
+    height: 50px;
+}
+.parametryProduct table thead tr{
+    background-color: #304068;
+    font-size: 16px;
+    /*font-family: "LibreFranklin";*/
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    /*width: 100%;*/
+    height: 50px;
+}
+.parametryProduct table tbody tr:nth-child(odd){
+    background-color: #d6d9e1;
+}
+.parametryProduct table tbody tr td:first-child {
+    font-size: 16px;
+    /*font-family: "LibreFranklin";*/
+    color: rgb(48, 64, 104);
+    font-weight: bold;
+    padding-left: 10px;
+}
+.parametryProduct table tbody tr td:nth-child(2) {
+    font-size: 16px;
+    /*font-family: "LibreFranklin";*/
+    color: rgb(48, 64, 104);
+}
+.parametryProduct table tbody td{
+    width:180px;
+}
+
+.newShoesDetail{
+    /*height: 410px;*/
+    width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-rows: 410px ;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media(min-width: 650px)and (max-width: 1059px){
+    .productImages{
+        /*margin: 0 auto;*/
+        display: flex;
+    }
+    .threeImages{
+        flex-direction: column;
+        margin-left: 50px;
+    }
+    .newShoesDetail{
+        height: 820px;
+        width: 600px;
+        margin: 0 auto;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-rows: 380px 380px;
+        grid-template-columns: 1fr 1fr;
+    }
+    .newShoesItemText{
+        height: 50px;
+    }
+
+    .threeImages .imageOverlay{
+        flex: 0;
+        width: 120px;
+        height: 120px;
+    }
+    .threeImages .imageOverlay .overlay{
+        width: 120px;
+        height: 120px;
+    }
+
+
+
+}
+@media (max-width: 1200px){
+    .newShoesDetail{
+        height: 820px;
+        width: 600px;
+        margin: 0 auto;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-rows: 400px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+@media (max-width:1060px){
+    .titleProduct{
+        font-size: 30px;
+    }
+    .productBottom{
+        display: block;
+    }
+    .productTop{
+        display: block;
+    }
+    .productImages{
+        margin-bottom: 15px;
+    }
+    .productColor,.productSize{
+        display: block;
+    }
+    .productFlex{
+        display: block;
+    }
+    .productSize{
+        margin-top:20px
+    }
+    .productColorTitle,.productSizeTitle{
+        margin-bottom: 10px;
+    }
+    .productColorsButtons{
+        margin-left: 10px;
+    }
+    .addToCart{
+        max-width: 155px;
+    }
+    .topImage img{
+        max-width: 100%;
+        width: 427px;
+    }
+    .productColorAndSize{
+        margin-top:0;
+    }
+
+}
+@media (max-width: 649px){
+    .threeImages div{
+        flex:0;
+        /*width: 120px;*/
+        /*max-width: 120px;*/
+        height: 120px;
+    }
+    .newShoesDetail{
+        height: 1650px;
+        width: 400px;
+        margin: 0 auto;
+        display: flex;
+        grid-gap: 10px;
+
+        flex-direction: column;
+        align-items: center;
+    }
+    .firstDivAboutUs{
+        height: 500px;
+    }
+
+
+}
+
+
+
+
+

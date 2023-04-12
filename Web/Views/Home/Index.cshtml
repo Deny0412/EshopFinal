@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Boty";
+    List<Image> Images = this.ViewBag.Images;
+}
+@model List<Product>;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boty</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/styles/Header.css">
+    <link rel="stylesheet" href="~/styles/style.css">
+    <link rel="stylesheet" href="~/styles/Main.css">
+    <link rel="stylesheet" href="~/styles/Footer.css">
+    <link rel="stylesheet" href="~/styles/slider.css">
+    <link rel="stylesheet" href="~/styles/detail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <div class="width1440">
+        <main>
+            <div class="filter">
+                <div class="filterDiv filterDiv1">
+                    <a class=" filterItem" href="">Chlapecké <img src="img/Group%20169.png" alt=""></a>
+                    <a class=" filterItem" href="">Dívčí <img src="img/Group%20171.png" alt=""></a>
+                </div>
+                <div class="filterDiv filterDiv2">
+                    <a class=" textCenter filterItem" href="">Doplňky</a>
+                    <a class=" textCenter filterItem" href="">Ostatní</a>
+                    <a class=" textCenter filterItem kontaktFilter" href="">Kontakt</a>
+                </div>
+            </div>
+            <div class="slider">
+
+
+                <div class="imgBx">
+                    <img src="img/slider.png" alt="">
+                    <div class="topText">
+                        Nová dívčí Kolekce
+                        šetrná k dětským nohám
+                    </div>
+                    <div class="downText">
+                        NEJEN DO MĚSTA,
+                        ALE I DO PŘÍRoDY
+                    </div>
+                    <div class="zobrProd btnOffer textCenter"><a href="">Zobrazit produkty</a></div>
+                    <div class="threeRadioButtons">
+                        <div class="sliderBtns productColorsButtons radio-group">
+                            <input class="sliderBtn" checked type="radio" name="slider">
+                            <input class="sliderBtn" type="radio" name="slider">
+                            <input class="sliderBtn" type="radio" name="slider">
+
+                        </div>
+                    </div>
+                    <!--            <div class="content">-->
+                    <!--                <h2>slide one</h2>-->
+                    <!--                <p>lorem </p>-->
+                    <!--                <a href="#">Zobrazit produkty</a>-->
+                    <!--            </div>-->
+                </div>
+            </div>
+            <div class="top">
+                <div class="boyShoes forImage"><a href=""> <img class="topImage3Pictures" src="img/pozadi_kluk.png" alt=""></a></div>
+                <div class="girlShoes forImage"><a href=""><img class="topImage3Pictures" src="img/pozadi_holka.png" alt=""></a></div>
+                <div class="howToChoose forImage last"><a href=""><img class="topImage3Pictures" src="img/pozadi_boty.png" alt=""></a></div>
+
+            </div>
+            <div class="lines">
+                <div class="px"></div>
+                <div><img class="" src="img/Group%20295.png" alt=""></div>
+                <div class="px"></div>
+            </div>
+
+            <div class="shoes">
+                <div class="newKousky">
+                    <p class="firstColor">Nejnovější kousky</p>
+                    <h2 class="secondColor">&nbsp V naší nabídce</h2>
+
+                </div>
+                <div class="newShoesDetail newShoesHeight">
+                     @{
+                         foreach (Product item in Model)
+                        {
+                             //Image selected=Images.Where(x=>x.product_id==item.id).FirstOrDefault();
+                                    <div class="shoe shoe1">
+                                        <a asp-controller="Home" asp-route-id="@item.id" asp-action="Detail">
+                                    <div>
+                                        <img class="imgWidth" src="@{
+                                foreach (Image image in Images)
+                            {
+                                if (image.product_id == item.id && image.priority == 1)
+                                {
+                                                            @image.path
+                          }
+                         }
+                                }" alt="">
+                                    </div>
+                                                <div><p class="newShoesItemText">@item.name</p></div>
+                                            </a>
+                                            <div class="itemTextDiv">
+                                                <div class="price">
+                                                    <p>@item.price Kč</p>
+                                                    <p></p>
+                                                </div>
+                                                @*<div class="basketOnShoe "><a asp-controller="Home" asp-action="Demand"><img src="img/basket.png" alt=""></a></div>*@
+                                            </div>
+
+                                        </div>
+
+                                }
+                         }
+
+
+
+                </div>
+                <div class="btnOffer textCenter"><a href="">Zobrazit celou nabídku</a></div>
+                <div class="lines">
+                    <div class="px"></div>
+                    <div><img class="" src="img/Group%20295.png" alt=""></div>
+                    <div class="px"></div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>

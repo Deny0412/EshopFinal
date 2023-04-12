@@ -1,0 +1,65 @@
+﻿@model Product;
+@{
+    Layout = "_LayoutAdmin"; 
+
+	MyContext context = new MyContext();
+	List<Category> categories = context.Categories.ToList();
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+<form method="post" asp-action="Delete" enctype="multipart/form-data">
+	<input asp-for="id" hidden />
+
+	<div class="row">
+		<div class="col-10">
+			<div class="border p-3 mt-4 row">
+				<div class="col-12 pb-2">
+					<h2 class="text-primary">Delete product</h2>
+					<hr />
+				</div>
+				<div class="mb-3">
+					<label asp-for="name"></label>
+					<input asp-for="name" class="form-control" disabled/>
+				</div>
+				<div class="mb-3">
+					<label asp-for="desc"></label>
+					<textarea asp-for="desc" rows="3" class="form-control" disabled></textarea>
+				</div>
+				<div class="mb-3 col-6">
+					<label asp-for="SKU"></label>
+					<input asp-for="SKU" class="form-control" disabled />
+				</div>
+				<div class="mb-3 col-6">
+					<label asp-for="price"></label>
+					<input asp-for="price" class="form-control" disabled />
+				</div>
+
+				<div class="mb-3 col-6">
+					<label asp-for="category_id"></label>
+					<select disabled asp-for="category_id" class="form-select">
+						@foreach (Category cat in categories)
+						{
+							<option value="@cat.id">@cat.name</option>
+						}
+
+					</select>
+				</div>
+
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary" style="width:150px">Delete</button>
+					<a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+						Back to List
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+</form>

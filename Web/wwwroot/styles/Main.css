@@ -1,0 +1,260 @@
+.filter > div > a{
+    border: 1px solid #b4bed5;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filterDiv{
+    display: flex;
+}
+.filterDiv .kontaktFilter{
+    display: none;
+}
+.filter{
+    margin-bottom: 20px;
+}
+.filterItem{
+    flex:1;
+    text-decoration: none;
+    color: rgb(180, 190, 213);
+}
+.boyShoes {
+    /*background: url(../img/pozadi_kluk.png) no-repeat center;*/
+}
+.forImage{
+    /*background-size: contain;*/
+    height: 200px;
+    /*padding-left: 30px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.topImage3Pictures{
+    height: 200px;
+    transition: all .5s ease-in-out;
+}
+.topImage3Pictures:hover {
+    transform: scale(1.2) ;
+}
+.girlShoes{
+    /*background: url(../img/pozadi_holka.png) no-repeat center;*/
+}
+.howToChoose{
+    /*background: url(../img/pozadi_boty.png) no-repeat center;*/
+}
+.shoes{
+
+    /*height: 200px;*/
+    /*text-align: center;*/
+}
+
+.newShoes{
+    width: 276px;
+    height: 1600px;
+    margin:0 auto;
+}
+.shoes .newShoesHeight{
+    grid-template-rows: 410px 410px;
+}
+.shoe{
+    width: 276px;
+    height: 380px;
+    border: 1px solid #B4BED5;
+    margin-top:20px;
+    padding-left: 10px;
+}
+.itemTextDiv{
+    display: flex;
+    align-items: center;
+}
+/*.itemTextDiv:first-child a{*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+.newShoesItemText{
+    color: rgb(48, 64, 104);
+    line-height: 1.2;
+    font-size: 18px;
+    height: 50px;
+}
+.basketOnShoe{
+    flex:1;
+    text-align: right;
+    justify-content: center;
+    margin-top: 10px;
+    padding-right: 15px;
+}
+.imgWidth{
+    width: 276px;
+}
+.btnOffer{
+    margin:24px auto;
+    width: 225px;
+    height: 50px;
+    background: #c7232f;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+.btnOffer:hover {
+    background: grey;
+}
+.price{
+    display: flex;
+    flex:2;
+
+}
+.price p:first-child{
+    flex:1;
+    font-size: 20px;
+    color: rgb(199, 35, 47);
+}
+.price p:last-child{
+    flex:1;
+    text-decoration: line-through;
+    font-size: 20px;
+    color: rgb(181, 191, 213);
+}
+
+.top > div{
+    margin-bottom: 10px;
+}
+.top last{
+    margin-bottom: 20px;
+}
+/*.topText{*/
+/*    font-size: 24px;*/
+/*    font-family: "Libre Franklin";*/
+/*    color: rgb(48, 64, 104);*/
+/*    text-transform: uppercase;*/
+/*    line-height: 1.2;*/
+/*}*/
+/*.topTextGirl{*/
+/*    color: rgb(199, 35, 47);*/
+/*    text-decoration: underline;*/
+/*    text-transform: uppercase;*/
+/*    font-size: 24px;*/
+/*}*/
+.firstColor{
+    margin:0;
+    text-align: center;
+    font-size: 35px;
+    color: rgb(199, 35, 47);
+    /*line-height: 1.2;*/
+}
+.secondColor{
+    margin:0;
+    text-align: center;
+    font-size: 35px;
+    color:#304068;
+}
+.shoes .lines{
+    margin-top: 20px;
+}
+.filterItem:hover{
+    transition-duration: 1s;
+    color:#c7232f;
+    border: 1px solid #c7232f;
+}
+
+.slider{
+    display: none;
+}
+.shoe .itemTextDiv .basketOnShoe {
+    visibility: visible;
+}
+
+.shoe{
+    transition: all .2s ease-in-out;
+}
+.shoe:hover{
+
+    border: 2px solid #C7232FFF;
+}
+.shoe:hover .newShoesItemText{
+    font-weight: bold;
+}
+
+.shoe5,.shoe6,.shoe7,.shoe8{
+    display: none;
+}
+/*.shoes .newShoesHeight{*/
+/*    height: 800px;*/
+/*}*/
+@media(min-width: 700px)  {
+
+    /*.shoes .newShoesHeight{*/
+    /*    height: 1700px;*/
+    /*}*/
+}
+@media (min-width: 1000px){
+
+    /*.shoes .newShoesHeight{*/
+    /*    height: 850px;*/
+    /*}*/
+}
+@media (min-width: 1200px) {
+    .shoe5,.shoe6,.shoe7,.shoe8{
+        display: block;
+    }
+}
+@media (min-width:1440px) {
+
+    .filterDiv .kontaktFilter{
+        display: flex;
+    }
+    .shoe .itemTextDiv .basketOnShoe {
+        visibility: hidden;
+    }
+    .shoe:hover .itemTextDiv .basketOnShoe {
+        visibility: visible;
+    }
+    .filter{
+        display: flex;
+        width: 1200px;
+    }
+    .filterDiv1{
+        flex:2;
+    }
+    .filterDiv2{
+        flex:3;
+    }
+    .top{
+        display: flex;
+        gap:30px;
+    }
+    .top div{
+        flex:1;
+    }
+    .newShoes{
+        height: 820px;
+        width: 1200px;
+        margin:0 auto;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-rows: 380px 380px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .basketOnShoe{
+        margin-top: 0px;
+        padding-right: 5px;
+    }
+    .newShoesItemText {
+        height: 40px;
+    }
+    .shoe5,.shoe6,.shoe7,.shoe8{
+        display: block;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+

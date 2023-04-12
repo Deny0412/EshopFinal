@@ -1,0 +1,185 @@
+﻿@using Web;
+@using Web.DataModels
+@model CartDataModel
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/styles/form.css" />
+@{
+	decimal total = 0;
+	decimal notend = 0;
+}
+<div class="cart">
+	<div class="cart-table">
+		<table class="table table-bordered w-50">
+			<thead>
+				<tr>
+					<th>Obrázek</th>
+					<th>Product</th>
+					<th>Barva</th>
+					<th>Velikost</th>
+					<th>Cena</th>
+					<th>Množství</th>
+					<th>Total</th>
+					<th>Odstranit</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (OrderItem item in Model.OrderItems)
+				{
+					<tr>
+						<td>
+
+
+							<img width="100px" src="
+											@foreach (Image image in ViewBag.Images)
+							{
+								if (item.Variant.product.id==image.product_id && image.priority==1)
+								{
+									@image.path
+								}
+							}	
+
+																" />
+
+						</td>
+						<td>@item.Variant.product.name</td>
+						<td>
+							@foreach (Color color in ViewBag.Colors)
+							{
+								if (item.Variant.color_id == color.id)
+								{
+									@color.color
+								}
+							}
+
+						</td>
+						<td>
+							@foreach (Size size in ViewBag.Sizes)
+							{
+								if (item.Variant.size_id == size.id)
+								{
+									@size.size
+								}
+							}
+						</td>
+						<td>@item.Variant.product.price Kč</td>
+						<td>
+							<div class="page-edit">
+								<div class="button">
+									<a style="text-decoration:none" asp-action="Edit" asp-route-index="@Model.OrderItems.IndexOf(item)" asp-route-quantity="@(item.quantity - 1)">
+										<div class="btn-secondary">
+											–
+										</div>
+									</a>
+								</div>
+								<div>
+									@item.quantity
+								</div>
+								<div class="button">
+									<a style="text-decoration:none" asp-action="Edit" asp-route-index="@Model.OrderItems.IndexOf(item)" asp-route-quantity="@(item.quantity + 1)">
+										<div class="btn-primary">
+											+
+										</div>
+									</a>
+
+								</div>
+							</div>
+						</td>
+						<td>@(
+							item.Variant.product.price * item.quantity
+							) Kč</td>
+						@{
+							notend = +(item.Variant.product.price * item.quantity);
+						}
+						<td class="remove">
+							<div class="remove-wrapper">
+								<a asp-action="Delete" asp-route-index="@Model.OrderItems.IndexOf(item)">
+									<div class="button btn btn-danger">
+										Х
+									</div>
+								</a>
+							</div>
+						</td>
+						@{
+							total += notend;
+						}
+					</tr>
+					
+
+
+				}
+
+			</tbody>
+		</table>
+	</div>
+	@*@if (Model.Count() > 0)
+	{*@
+		<div class="checkout-table">
+			<div class="wrapper">
+				<div class="heading">
+					Celkem
+				</div>
+				<table>
+					<tr>
+						<th>Cena CELKOVĚ  </th>
+						<td>
+
+							@total
+
+							Kč
+						</td>
+					</tr>
+				</table>
+				
+			</div>
+		</div>
+	<div class="infoForm">
+		<h1>Poptávkový formulář</h1>
+		<p>Vyplňte formulář níže a my se Vám ozveme,jakmile to půjde.</p>
+		
+		<form asp-controller="Order" asp-action="CreateOrder" method="post">
+			<input type="hidden" asp-for="OrderItems"/>
+			<div class="nameInputs">
+				<div>
+					<label for="firstName" >Jméno</label><br>
+					<input asp-for="User.name" required type="text" placeholder="Zadejte své jméno...">
+				</div>
+				<div>
+					<label for="lastName">Příjmení</label><br>
+					<input asp-for="User.surname" required type="text" placeholder="Zadejte své přijmení...">
+				</div>
+			</div>
+			
+			<br>
+			<label for="telefon">Telefon</label><br>
+			<input type="tel" asp-for="User.telephone" required id="telefon" placeholder="Zadejte svůj telefon..."><br>
+			<label>
+				Země
+			</label><br>
+			<div class="select_box">
+				<select required asp-for="User.address1">
+					<option id="firstSelect">Vyberte zemi...</option>
+					<option value="1">Česká republika</option>
+					<option value="2">Slovenská republika</option>
+				</select>
+			</div>
+			<br>
+			<label>Způsob platby</label><br><br>
+			<div class="paymentMethod">
+				<label for="cash">
+					<input type="radio" name="method" id="cash" checked>Hotově
+				</label>
+				<label for="transfer">
+					<input name="method" type="radio" id="transfer">Převodem
+				</label>
+				<label for="byCard">
+					<input name="method" type="radio" id="byCard">Kartou
+				</label>
+			</div>
+			<div class="buttonsForm">
+				
+				<button class="btn" id="subBtn" type="submit">Potvrdit</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Web</title>
+    <link rel="stylesheet" href="~/styles/Header.css">
+    <link rel="stylesheet" href="~/styles/style.css">
+    <link rel="stylesheet" href="~/styles/Main.css">
+    <link rel="stylesheet" href="~/styles/Footer.css">
+    <link rel="stylesheet" href="~/styles/slider.css">
+    <link rel="stylesheet" href="~/styles/detail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="upHead">
+        <div class="first">
+            <div class="telMail">
+
+                <a class="telNumber" href="tel:777666555"><div class="mobileHiden">+420</div><div>&nbsp;777&nbsp;666&nbsp;555</div></a>
+
+                &nbsp;|
+                <a class="mail" href="mailto:info@nejlepsiboty.cz">&nbsp; info@nejlepsiboty.cz</a>
+            </div>
+            @{
+                if (this.ViewBag.Authenticated)
+                {
+
+                    <a class="logoAccount" asp-controller="Login" asp-action="Logout">
+                        <img src="~/img/profile-user.png" alt="account">
+                        Odhlásit
+                    </a>
+                }
+                else
+                {
+                    <a class="logoAccount" asp-controller="Login" asp-action="Index">
+                        <img src="~/img/profile-user.png" alt="account">
+                        Prihlasit se
+                    </a>
+                }
+            }
+
+        </div>
+    </div>
+    <div class="width1440">
+
+
+        <header>
+
+            <div class="head">
+
+                <a asp-controller="Home" asp-action="Index" class="logo"><img src="~/img/Group%204.png" alt="Logo"></a>
+                <div class="fastNav">
+                    @if (ViewBag.Authenticated)
+                    {
+                        <div style="margin-right:1rem">
+                            <form>
+                                <button class="colorRed btn-light " asp-controller="Admin" asp-action="Index">Admin</button>
+                            </form>
+                            
+                        </div>
+                        
+                        
+                    }
+                    <form action="search.php">
+                        <input class="mobileHiden searchBar" type="text" placeholder="Vyhledat zboží..." />
+                    </form>
+
+                    <a class="pcHiden" href=""><img src="~/img/loupe.png" alt="vyhledávač"></a>
+                    <a class="basketUp" asp-controller="Cart" asp-action="Index"><img src="~/img/basket.png" alt="košík"></a>
+                    <a href=""><img src="~/img/heart.png" alt="oblíbené"></a>
+                </div>
+
+            </div>
+        </header>
+    </div>
+            @RenderBody()
+
+    <footer>
+        <div class="topFooter">
+            <div class="topFooterDiv footerTextTopNextToCircle ">
+                <a class="blueCircle" href="">
+                    <img class="imgInBlueCircle" src="~/img/Group%20195.png" alt="">
+                </a>
+                <p>vše máme skladem</p>
+            </div>
+
+
+
+            <div class="topFooterDiv footerTextTopNextToCircle">
+                <a class="blueCircle" href="">
+                    <img class="imgInBlueCircle" src="~/img/Group%20196.png" alt="">
+                </a>
+                <p>doprava zdarma</p>
+            </div>
+            <div class="topFooterDiv footerTextTopNextToCircle">
+                <a class="blueCircle" href="">
+                    <img class="imgInBlueCircle" src="~/img/Group%20293.png" alt="">
+                </a>
+                <p>jak měřit velikosti</p>
+            </div>
+
+        </div>
+        <div class="footerEmail">
+            <p class="newsMainText">Nezmeškejte nové a výhodné akce</p>
+            <p class="newsAfterMainText">Zadejte svůj e-mailem a obratem vám zašleme PDF s inspirací zdarma.</p>
+            <form asp-controller="Home" asp-action="Demand">
+                <input type="email" class="inputNews" type="text" required placeholder="Zadejte svůj email...">
+                <button class="btnNews" type="submit">přihlásit</button>
+            </form>
+        </div>
+        <div class="footerDown">
+            <div class="aboutUs">
+                <div class="firstDivAboutUs">
+                    <p class="aboutUsMainText">O nás</p>
+                    <p class="aboutUsAfterMainText">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam quis quam. Pellentesque arcu. Proin pede metus, vulputate nec, fermentum fringilla, vehicula vitae, justo. Morbi imperdiet, mauris ac auctor dictum, nisl ligula egestas nulla, et sollicitudin sem purus in lacus. Praesent vitae arcu tempor neque lacinia pretium. Etiam ligula pede, sagittis quis, interdum ultricies, scelerisque eu. Sed vel lectus. Donec odio tempus molestie, porttitor ut, iaculis quis, sem. Pellentesque arcu. Vestibulum fermentum tortor id mi. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aenean id metus id velit ullamcorper pulvinar. Fusce wisi. Integer imperdiet lectus quis justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. </p>
+                    <a asp-controller="Home" asp-action="Index"><img class="~/imgWhiteLogo" src="img/white_logo.png" alt=""></a>
+                </div>
+
+                <div class="naseNabidka">
+                    <div class="leftColumn">
+                        <div class="girls">Dívčí</div>
+                        <ul type="circle">
+                            <li><a href="">Tenisky</a> </li>
+                            <li><a href="">Holinky</a></li>
+                            <li><a href="">Sandály</a></li>
+                            <li><a href="">Baleríny</a></li>
+                            <li><a href="">Polobotky</a></li>
+                        </ul>
+                    </div>
+                    <div class="rightColumn">
+                        <div class="boys">Chlapecké</div>
+                        <ul type="circle">
+                            <li><a href="">Tenisky</a> </li>
+                            <li><a href="">Holinky</a></li>
+                            <li><a href="">Sandály</a></li>
+                            <li><a href="">Baleríny</a></li>
+                            <li><a href="">Polobotky</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="contactUs">
+                <div class="contactUsMainText">Kontaktujte nás</div>
+                <div class="contactUsPadding">
+                    <a href="mailto:info@nejlepsiboty.cz"><img src="~/img/6.png" alt=""> info@nejlepsiboty.cz</a>
+                </div>
+                <div class="contactUsPadding">
+                    <a href="tel:777666555"><img src="~/img/8.png" alt="">+420 777 666 555</a>
+                </div>
+
+                <div class="fbtwiiterigPadding">
+                    <a href=""><img src="~/img/facebook.png" alt=""></a>
+                    <a href=""><img src="~/img/Group%20153.png" alt=""></a>
+                    <a href=""><img src="~/img/twitter.png"></a>
+                </div>
+
+                <address class="addressFooter">
+                    Litvínovská 600, Praha 9, 190 00
+                </address>
+
+            </div>
+        </div>
+
+    </footer>
+   @* <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

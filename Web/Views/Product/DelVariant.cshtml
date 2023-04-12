@@ -1,0 +1,60 @@
+﻿
+@{
+	@model TotalProduct;
+	Layout = "_LayoutAdmin";
+	List<Product> products=this.ViewBag.Products;
+	List<Color> colors = this.ViewBag.Colors;
+	List<Size> sizes = this.ViewBag.Sizes;
+	Product selectedProduct = products.Where(c => c.id == Model.product.id).FirstOrDefault();
+	Color selectedColor = colors.Where(c => c.id == Model.color_id).FirstOrDefault();
+	Size selectedSize = sizes.Where(c => c.id == Model.size_id).FirstOrDefault();
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<form method="post" asp-action="DelVariant" enctype="multipart/form-data">
+	<input asp-for="id" hidden />
+
+	<div class="row">
+		<div class="col-2">
+			<div class="border p-3 mt-4 row">
+				<div class="col-12 pb-2">
+					<h2 class="text-primary">Delete variant</h2>
+					<hr />
+				</div>
+				<div class="mb-3">
+					<label asp-for="product.id">Produkt</label>
+					<input asp-for="product.id" class="form-control" hidden/>
+					<input value="@selectedProduct.name" class="form-control" disabled/>
+					<span asp-validation-for="product.id" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="color_id">Barva</label>
+					<input asp-for="color_id" class="form-control" hidden/>
+					<input value="@selectedColor.color" class="form-control" disabled/>
+					<span asp-validation-for="color_id" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="size_id">Velikost</label>
+					<input asp-for="size_id" class="form-control" hidden/>
+					<input value="@selectedSize.size" class="form-control" disabled/>
+					<span asp-validation-for="size_id" class="text-danger"></span>
+				</div>
+
+				<div class="col-12">
+					<button type="submit" class="btn btn-primary" style="width:150px">Delete</button>
+					<a asp-controller="Product" asp-route-id="@Model.product.id" asp-action="Variant" class="btn btn-secondary" style="width:150px">
+						Back to List
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+</form>

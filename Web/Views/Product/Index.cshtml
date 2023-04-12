@@ -1,0 +1,117 @@
+﻿@model List<Product>;
+@{
+    Layout = "_LayoutAdmin";
+    MyContext context = new MyContext();
+    List<Category> categories = context.Categories.ToList();
+    List<Image> Images = this.ViewBag.Images;
+    <h2>@TempData["success"]</h2>
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="~/lib/lightbox2/css/lightbox.css" />
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Product List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="Upsert" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Create New Product
+            </a>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Back to site
+            </a>
+        </div>
+    </div>
+    <br /><br />
+
+    <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Název</th>
+                <th>Popis</th>
+                <th>SKU</th>
+                <th>cena</th>
+                <th>Kategorie</th>
+                <th>Hl.obraz</th>
+                <th>Akce</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>
+                        @obj.name
+                    </td>
+                    <td>
+                        @obj.desc
+                    </td>
+                    <td>
+                        @obj.SKU
+                    </td>
+                    <td>
+                        @obj.price
+                    </td>
+                    <td>
+                        @{
+                            Category selected = categories.Where(c => c.id == obj.category_id).FirstOrDefault();
+
+                            if (selected != null)
+                            {
+                                                @selected.name;
+                            }
+                            
+                            }
+                            </td>
+                            <td>
+                                
+                                @*<img src="@obj.photoMain" width="100px" style="border-radius:5px; border:1px solid #bbb9b9" />*@
+
+                        <a class="example-image-link" href="@{
+                                foreach (Image item in Images)
+                            {
+                                if (item.product_id == obj.id && item.priority == 1)
+                                {
+                                                        @item.path;
+                          }
+                         }
+    }" data-lightbox="example-1">
+                            <img width="100px" src="@{
+                            foreach (Image item in Images)
+                            {
+                                if (item.product_id == obj.id && item.priority == 1)
+                                {
+                                        @item.path;
+                                }
+                         }}" /></a>
+                                @*@{
+                            foreach(Image img in Images){
+                                if (obj.id==img.product_id)
+                                {
+                                    //<img  src="@img.path" width="100px" style="border-radius:5px; border:1px solid #bbb9b9" />
+                                    <a class="example-image-link" href="@img.path" data-lightbox="example-1"><img width="100px" src="@img.path" /></a>
+
+                                }
+                            }
+                        }*@
+                            </td>
+                    
+                            <td>
+                                <div class="w-75 btn-group" role="group">
+                                    <a asp-controller="Product" asp-action="Upsert" asp-route-id="@obj.id"
+                           class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>
+                                    <a asp-controller="Product" asp-action="Delete" asp-route-id="@obj.id"
+                           class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+                                    <a asp-controller="Product" asp-action="Variant" asp-route-id="@obj.id"
+                           class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i>Spravovat Var</a>
+                                </div>
+                            </td>
+                        </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/lib/js/lightbox.js"></script>
+@*<script src="~/lib/js/lightbox-plus-jquery.min.js"></script>*@
+

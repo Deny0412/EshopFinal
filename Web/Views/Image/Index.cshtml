@@ -1,0 +1,17 @@
+﻿@model List<Image>;
+@{
+    List<Product> products = this.ViewBag.Products;
+}
+
+
+
+<select>
+    <option value="" selected disabled hidden>Produkty</option>
+    @foreach (var item in products)
+    {
+        <option value="@item.id">@item.name</option>
+    }
+  
+</select>
+
+

@@ -1,0 +1,69 @@
+﻿@model Product;
+@{
+    MyContext context = new MyContext();
+    Layout = "_LayoutAdmin"; 
+    List<TotalProduct> variants = context.Variants.ToList();
+    List<Product> products = context.Products.ToList();
+    List<Color> colors= context.Colors.ToList();
+    List<Size> sizes= context.Sizes.ToList();
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Variant List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="CreateVariant" asp-route-id="@Model.id" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Create New Variant
+            </a>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Back to site
+            </a>
+            <a asp-controller="Product" asp-action="Index" class="btn">
+                <i class="bi bi-plus-circle"></i> &nbsp; Back to Variants
+            </a>
+        </div>
+    </div>
+    <br /><br />
+    <h2 class="h2">@Model.name</h2>
+    <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Barva</th>
+                <th>Velikost</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            @foreach (var item in context.Variants)
+            {
+                if (Model.id == item.product.id)
+                {
+                    <tr>
+                        <td>
+                            @{
+                                Color color = context.Colors.Find(item.color_id);
+                                @color.color;
+                            }
+                        </td>
+                        <td>
+                            @{
+                                Size size = context.Sizes.Find(item.size_id);
+                                @size.size;
+                            }
+                        </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Product" asp-action="DelVariant" asp-route-id="@item.id"
+                   class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+                    </div>
+                </td>
+                    </tr>
+                }
+            }  
+            
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,54 @@
+﻿@model TotalProduct;
+@{
+	Layout = "_LayoutAdmin";
+
+	List<Color> colors= this.ViewBag.Colors;
+	List<Size> sizes = this.ViewBag.Sizes;
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+<form method="post" asp-controller="Product" asp-action="CreateVariant" asp-route-productId="@Model.product.id">
+	
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Create Variant for</h2>
+			<hr />
+		</div>
+		@*<div asp-validation-summary="All"></div>*@
+		@*<input asp-for="product.id" value="@Model.product.id" hidden />*@
+
+		@*id varianty:<input asp-for="id" value="@Model.id"/>*@
+		@*@Model.id*@
+
+		<div class="mb-3 col-6">
+					<label asp-for="color_id"></label>
+					<select asp-for="color_id" class="form-select">
+						@foreach (Color color in colors)
+						{
+							<option value="@color.id">@color.color</option>
+						}
+
+					</select>
+		</div>
+		<div class="mb-3 col-6">
+			<label asp-for="size_id"></label>
+			<select asp-for="size_id" class="form-select">
+				@foreach (Size size in sizes)
+				{
+					<option value="@size.id">@size.size</option>
+				}
+
+			</select>
+		</div>
+		@*<div class="mb-3">
+			<label asp-for=""></label>
+			<input asp-for="DisplayOrder" class="form-control" />
+			<span asp-validation-for="DisplayOrder" class="text-danger"></span>
+		</div>*@
+		<button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+		<a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">
+			Back to Variant List
+		</a>
+		@*asp-route-id="@Model.product_id"*@
+	</div>
+</form>
